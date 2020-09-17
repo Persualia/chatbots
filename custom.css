@@ -1,0 +1,64 @@
+.Branding {display:none}
+.is-unselectable {display:none}
+.message-date {display:none !important}
+.BackButton_Container {display: none}
+
+/* HEADER */
+
+/*hidden header mobile*/
+@media (max-width: 767px) {
+ .Header { display:none;  }
+ .Chat { padding-top: 50px; }
+}
+
+.Header{
+ height: 70px !important; 
+}
+.Header__Subtitle{
+ display:none;
+}
+
+/*BUTTONS*/
+.input-buttons {justify-content: center;}
+.input-button { 
+  border-radius: 20px !important; 
+  padding: 10px; 
+  border-color: #ffffff; 
+  margin-right: 6px !important;
+}
+
+.is-image-button.is-flex-direction-column {
+    height: 130px !important;
+}
+
+.is-image-button .image .Media, 
+.is-image-button .image,
+.input-button .icon{ pointer-events:none; }
+
+/* Button With Link */
+.chains { display: none }
+
+
+
+/*IMAGES*/
+figure { background-color:transparent !important }
+
+/*FONTS/*
+
+/*INTERLINIADOS*/
+span.input-button-label{ line-height: 1.2; }
+.content :not(:last-child) { margin-bottom:0!important; }
+
+/* BUTTONS HOVER */
+/*.input-button.u-white-space-normal.is-flex-direction-column:hover {
+ background-color:#8711A0 !important;
+}
+
+span.input-button-label:hover, 
+.input-button.u-white-space-normal.is-flex-direction-column:hover span.input-button-label:hover,
+button.input-button.u-white-space-normal.is-flex-direction-column:hover {
+ color: white !important; 
+}
+*/
+
+
