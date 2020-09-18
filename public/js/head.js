@@ -25,6 +25,7 @@ function isMobile(){
 
 /* Check For Business Hours */
 function isBusinessOpen() {
+    if (typeof(calendar == undefined)) return true;
     var nowDateTime = new Date();
     var offset = 0;
 
@@ -39,10 +40,8 @@ function isBusinessOpen() {
             var trackDate = new Date(nowYear, nowMonth, nowDate, item.h, item.m);
             if (nowDateTime > trackDate) currentStatus = item.status;
         });
-    }
-    console.log('open: ' + currentStatus);
-    return (currentStatus == 'open');
-    //return(currentStatus);
+    }    
+    return (currentStatus == 'open');    
 }
 
 /* Check Mobile or Desktop */
