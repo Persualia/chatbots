@@ -24,8 +24,7 @@ function isMobile(){
 }
 
 /* Check For Business Hours */
-function isBusinessOpen() {
-    if (typeof(calendar == undefined)) return true;
+function isBusinessOpen() {    
     var nowDateTime = new Date();
     var offset = 0;
 
