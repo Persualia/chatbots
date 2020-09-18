@@ -1,15 +1,5 @@
 /* Funciones para V3 */
 
-
-
-landbotScope.onLoad(function () {
-    landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
-    if (typeof (calendar) != undefined) {
-        landbotScope.setCustomData({ mobile: isMobile() });
-    }
-});
-
-
 /* Check For Business Hours */
 function isBusinessOpen() {
     var nowDateTime = new Date();
