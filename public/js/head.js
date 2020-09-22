@@ -74,15 +74,20 @@ function goToURL(data, keepSession = true) {
 } 
 
 /* save variables */
-function saveVariables(landbotScope) {    
+function saveVariables(landbotScope, variables = null) {    
     console.log("saveVariables");
     console.log(landbotScope);
-    if (typeof (calendar) != "undefined") {
+    /*if (typeof (calendar) != "undefined") {
         console.log("defined " + typeof (calendar));
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
     }
-    else console.log("undefined " + typeof (calendar));
+    else console.log("undefined " + typeof (calendar));*/
     landbotScope.setCustomData({ mobile: isMobile() });
+    if (variables) {        
+        for (const [key, value] of Oject.entries(variables)) {
+            landbotScope.setCustomData({key: value});
+        }
+    }
 }
 
 if (!isIframe()) {
