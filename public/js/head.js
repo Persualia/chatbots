@@ -82,6 +82,7 @@ function saveVariables(landbotScope, variables = null) {
     if (variables) {        
         for (const [key, value] of Object.entries(variables)) {
             landbotScope.setCustomData({key: value});
+            console.log(key);
             if (key == "calendar") {
                 landbotScope.setCustomData({ businessisopen: isBusinessOpen()});
             }
