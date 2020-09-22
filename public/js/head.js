@@ -27,7 +27,6 @@ function isMobile(){
 function isBusinessOpen() {    
     var nowDateTime = new Date();
     var offset = 0;
-
     var nowYear = nowDateTime.getFullYear();
     var nowMonth = nowDateTime.getMonth();
     var nowDate = nowDateTime.getDate();
