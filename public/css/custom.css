@@ -12,7 +12,7 @@
   height: 78px !important;
 }
 .Header__Subtitle{ display:none; }
-.Chat { padding-top: 90px; }
+.Chat { padding-top: 90px !important; }
 /*
 @media (max-width: 767px) {
  .Header { display:none;  }
