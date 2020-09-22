@@ -73,9 +73,8 @@ function goToURL(data, keepSession = true) {
     }
 } 
 
-/* save vars */
-function saveVariables() {
-    console.log("landbotScope onLoad");
+/* save variables */
+function saveVariables(landbotScope) {    
     if (typeof (calendar) != "undefined") {
         console.log("defined " + typeof (calendar));
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
