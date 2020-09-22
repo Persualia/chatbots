@@ -75,13 +75,16 @@ function goToURL(data, keepSession = true) {
 
 /* save variables */
 function saveVariables(landbotScope, variables = null) {       
-    if (typeof (calendar) != "undefined") {        
+    /*if (typeof (calendar) != "undefined") {        
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
-    }    
+    }    */
     landbotScope.setCustomData({ mobile: isMobile() });
     if (variables) {        
         for (const [key, value] of Object.entries(variables)) {
             landbotScope.setCustomData({key: value});
+            if (key == "calendar") {
+                landbotScope.setCustomData({ businessisopen: isBusinessOpen()});
+            }
         }
     }
 }
