@@ -85,7 +85,7 @@ function saveVariables(landbotScope, variables = null) {
     else console.log("undefined " + typeof (calendar));*/
     landbotScope.setCustomData({ mobile: isMobile() });
     if (variables) {        
-        for (const [key, value] of Oject.entries(variables)) {
+        for (const [key, value] of Object.entries(variables)) {
             landbotScope.setCustomData({key: value});
         }
     }
