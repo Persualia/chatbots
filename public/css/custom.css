@@ -11,10 +11,8 @@
   padding-bottom:10px !important;
   height: 78px !important;
 }
-.Header__Subtitle{
-  display:none;
- }
-
+.Header__Subtitle{ display:none; }
+.Chat { padding-top: 90px; }
 /*
 @media (max-width: 767px) {
  .Header { display:none;  }
