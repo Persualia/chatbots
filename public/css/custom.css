@@ -9,7 +9,7 @@
 .Header {
   padding-top:10px !important;
   padding-bottom:10px !important;
-  height: 70px;
+  height: 78px !important;
 }
 .Header__Subtitle{
   display:none;
