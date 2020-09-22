@@ -74,7 +74,7 @@ function goToURL(data, keepSession = true) {
 } 
 
 /* save variables */
-function saveVariables() {    
+function saveVariables(landbotScope = null) {    
     console.log("saveVariables");
     console.log(landbotScope);
     if (typeof (calendar) != "undefined") {
