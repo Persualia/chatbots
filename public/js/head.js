@@ -24,7 +24,7 @@ function isMobile(){
 }
 
 /* Check For Business Hours */
-function isBusinessOpen() {    
+function isBusinessOpen(calendar) {    
     var nowDateTime = new Date();
     var offset = 0;
 
@@ -75,17 +75,13 @@ function goToURL(data, keepSession = true) {
 
 /* save variables */
 function saveVariables(landbotScope, variables = null) {       
-    /*if (typeof (calendar) != "undefined") {        
+    if (typeof (calendar) != "undefined") {        
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
-    }    */
+    }    
     landbotScope.setCustomData({ mobile: isMobile() });
     if (variables) {        
         for (const [key, value] of Object.entries(variables)) {
-            landbotScope.setCustomData({key: value});
-            console.log(key);
-            if (key == "calendar") {
-                landbotScope.setCustomData({ businessisopen: isBusinessOpen()});
-            }
+            landbotScope.setCustomData({key: value});                                    
         }
     }
 }
