@@ -74,15 +74,10 @@ function goToURL(data, keepSession = true) {
 } 
 
 /* save variables */
-function saveVariables(landbotScope, variables = null) {    
-    console.log("saveVariables");
-    console.log(landbotScope);
-    console.log(variables);
-    /*if (typeof (calendar) != "undefined") {
-        console.log("defined " + typeof (calendar));
+function saveVariables(landbotScope, variables = null) {       
+    if (typeof (calendar) != "undefined") {        
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
-    }
-    else console.log("undefined " + typeof (calendar));*/
+    }    
     landbotScope.setCustomData({ mobile: isMobile() });
     if (variables) {        
         for (const [key, value] of Object.entries(variables)) {
