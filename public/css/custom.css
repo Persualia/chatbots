@@ -6,6 +6,16 @@
 /* HEADER */
 
 /*hidden header mobile*/
+.Header {
+  padding-top:10px !important;
+  padding-bottom:10px !important;
+  height: 70px;
+}
+.Header__Subtitle{
+  display:none;
+ }
+
+/*
 @media (max-width: 767px) {
  .Header { display:none;  }
  .Chat { padding-top: 50px; }
@@ -17,7 +27,7 @@
 .Header__Subtitle{
  display:none;
 }
-
+*/
 /*BUTTONS*/
 .input-buttons {justify-content: center;}
 .input-button { 
