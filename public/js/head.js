@@ -48,7 +48,7 @@ function isMobile() {
 }
 
 /*send to Datalayer even is in iframe */
-function dataLayerEvent(data) {
+this.dataLayer = function(data) {
     if (isIframe()) {
         Landbot.send('dataLayerEvent', data);
     } else {
