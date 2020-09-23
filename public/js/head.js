@@ -73,13 +73,6 @@ window.saveVariables = function(landbotScope, variables = null) {
 }
 
 /* Google Tag Manager */
-var this_js_script = $('script[src*=head]'); // or better regexp to get the file name..
-console.log(this_js_script);
-var gtmID = this_js_script.attr('gtmid');
-console.log(gtmID);
-var landbotName = this_js_script.attr('landbotname');
-console.log(landbotName);
-
 if (typeof gtmID !== 'undefined') {
     (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
