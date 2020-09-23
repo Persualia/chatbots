@@ -50,8 +50,10 @@ function isMobile() {
 /*send to Datalayer even is in iframe */
 window.dataLayerEvent = function(data) {
     if (isIframe()) {
+        console.log("YES iFrame");
         Landbot.send('dataLayerEvent', data);
     } else {
+        console.log("NO iFrame");
         dataLayer.push(data);
     }
 
