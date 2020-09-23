@@ -11,6 +11,12 @@ if (typeof gtmID !== 'undefined') {
     })(window, document, 'script', 'dataLayer', gtmID);
 }
 
+if (!isIframe()) {
+    if (typeof landbotName !== 'undefined')
+        dataLayerEvent({'event':'Landbot Name','landbotName':landbotName}); 
+    dataLayerEvent({'event':'Ace','action':'LPV Bot'});
+}
+
 /* End Google Tag Manager */
 
 /* Check if is Iframe */
@@ -87,7 +93,3 @@ window.saveVariables = function(landbotScope, variables = null) {
     }
 }
 
-if (!isIframe()) {
-    dataLayerEvent({'event':'Landbot Name','landbotName':landbotName}); 
-    dataLayerEvent({'event':'Ace','action':'LPV Bot'});
-}
