@@ -73,7 +73,7 @@ function saveVariables(landbotScope, variables = null) {
 }
 
 /* Google Tag Manager */
-console.log("gtmID " + this.gtmID);
+console.log("gtmID " + parent.gtmID);
 if (typeof gtmID !== 'undefined') {
     (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
