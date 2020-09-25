@@ -73,6 +73,7 @@ function saveVariables(landbotScope, variables = null) {
 }
 
 /* Google Tag Manager */
+console.log("gtmID "+gtmID);
 if (typeof gtmID !== 'undefined') {
     (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
@@ -85,6 +86,7 @@ if (typeof gtmID !== 'undefined') {
 }
 
 if (!isIframe()) {
+    console.log("landbotName "+landbotName);
     if (typeof landbotName !== 'undefined')
         dataLayerEvent({'event':'Landbot Name','landbotName':landbotName}); 
     dataLayerEvent({'event':'Ace','action':'LPV Bot'});
