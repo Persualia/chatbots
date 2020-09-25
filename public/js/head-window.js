@@ -9,7 +9,7 @@ function isMobile(){
 }
 
 /* Check For Business Hours */
-function isBusinessOpen() {    
+window.isBusinessOpen = function() {    
     var nowDateTime = new Date();
     var offset = 0;
     var nowYear = nowDateTime.getFullYear();
@@ -33,7 +33,7 @@ function isMobile() {
 }
 
 /*send to Datalayer even is in iframe */
-function dataLayerEvent(data) {
+window.dataLayerEvent = function(data) {
     if (isIframe()) {
         console.log("YES iFrame");
         Landbot.send('dataLayerEvent', data);
@@ -44,7 +44,7 @@ function dataLayerEvent(data) {
 
 }
 /* jump to URL */
-function goToURL(data, keepSession = true) {
+window.goToURL = function(data, keepSession = true) {
     var url = new URL(data);
     var params = url.searchParams;
     if (typeof ga === 'function' && keepSession) {
@@ -60,7 +60,7 @@ function goToURL(data, keepSession = true) {
 } 
 
 /* save variables */
-function saveVariables(landbotScope, variables = null) {       
+window.saveVariables = function(landbotScope, variables = null) {       
     if (typeof (calendar) != "undefined") {        
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
     }    
