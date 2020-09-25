@@ -68,7 +68,10 @@ function saveVariables(landbotScope, variables = null) {
     }
     landbotScope.setCustomData({ mobile: isMobile() });
     if (variables) {
+        console.log(variables);
         for (const [key, value] of Object.entries(variables)) {
+            console.log(key);
+            console.log(value);
             landbotScope.setCustomData({ key: value });
         }
     }
