@@ -73,23 +73,26 @@ function saveVariables(landbotScope, variables = null) {
 }
 
 /* Google Tag Manager */
-console.log("gtmID "+gtmID);
-if (typeof gtmID !== 'undefined') {
-    (function (w, d, s, l, i) {
-        w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
-        }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', gtmID);
+function init(gtmID, landbotName) {
+    console.log("gtmID "+gtmID);
+    if (typeof gtmID !== 'undefined') {
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', gtmID);
+    }
+    
+    if (!isIframe()) {
+        console.log("landbotName "+landbotName);
+        if (typeof landbotName !== 'undefined')
+            dataLayerEvent({'event':'Landbot Name','landbotName':landbotName}); 
+        dataLayerEvent({'event':'Ace','action':'LPV Bot'});
+    }
+    
+    /* End Google Tag Manager */
 }
 
-if (!isIframe()) {
-    console.log("landbotName "+landbotName);
-    if (typeof landbotName !== 'undefined')
-        dataLayerEvent({'event':'Landbot Name','landbotName':landbotName}); 
-    dataLayerEvent({'event':'Ace','action':'LPV Bot'});
-}
-
-/* End Google Tag Manager */
