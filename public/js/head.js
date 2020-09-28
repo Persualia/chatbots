@@ -71,8 +71,8 @@ function saveVariables(landbotScope, variables = null) {
         console.log(variables);
         for (const [key, value] of Object.entries(variables)) {
             console.log(typeof key + " " + key);
-            console.log(typeof value + " " + value);
-            landbotScope.setCustomData({ chusta: "value" });
+            console.log(typeof value + " " + value);            
+            landbotScope.setCustomData({ [key] : value });
         }
     }
 }
