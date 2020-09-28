@@ -67,11 +67,8 @@ function saveVariables(landbotScope, variables = null) {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
     }
     landbotScope.setCustomData({ mobile: isMobile() });
-    if (variables) {
-        console.log(variables);
-        for (const [key, value] of Object.entries(variables)) {
-            console.log(typeof key + " " + key);
-            console.log(typeof value + " " + value);            
+    if (variables) {        
+        for (const [key, value] of Object.entries(variables)) {            
             landbotScope.setCustomData({ [key] : value });
         }
     }
