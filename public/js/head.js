@@ -67,16 +67,26 @@ function saveVariables(landbotScope, variables = null) {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
     }
     landbotScope.setCustomData({ mobile: isMobile() });
-    if (variables) {        
-        for (const [key, value] of Object.entries(variables)) {            
-            landbotScope.setCustomData({ [key] : value });
+    if (variables) {
+        for (const [key, value] of Object.entries(variables)) {
+            landbotScope.setCustomData({ [key]: value });
         }
     }
 }
 
+function isGTM(id) {
+    var gtmScripts = document.querySelectorAll('script[src*="googletagmanager"]');
+    for (var i = 0; i < gtmScripts.length; i++) {
+        if (gtmScripts[i].getAttribute("src").includes(id)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 /* Google Tag Manager */
 console.log("gtmID " + typeof gtmID);
-if (typeof gtmID !== 'undefined') {
+if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
     console.log("gtmID " + gtmID);
     (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
