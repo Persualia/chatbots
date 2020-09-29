@@ -34,13 +34,14 @@ function isMobile() {
 
 /*send to Datalayer even is in iframe */
 function dataLayerEvent(data) {
-    if (isIframe()) {
+    /*if (isIframe()) {
         console.log("YES iFrame");
         Landbot.send('dataLayerEvent', data);
     } else {
         console.log("NO iFrame");
         dataLayer.push(data);
-    }
+    }*/
+    dataLayer.push(data);
 
 }
 /* jump to URL */
@@ -51,12 +52,12 @@ function goToURL(data, keepSession = true) {
         var linkerParam = ga.getAll()[0].get('linkerParam').split("=");
         params.set(linkerParam[0], linkerParam[1]);
     }
-
-    if (isIframe()) {
+    window.open(url);
+    /*if (isIframe()) {
         Landbot.send('sendto', url);
     } else {
-        window.location.href = url;
-    }
+        window.open(url);
+    }*/
 }
 
 /* save variables */
