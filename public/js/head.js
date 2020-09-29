@@ -1,6 +1,6 @@
 /* Check if is Iframe */
 function isIframe() {
-    return (window.self !== window.top)
+    return (window.self !== window.top) || (window.href.includes("landbot.io"));
 }
 
 /* Check Mobile or Desktop */
