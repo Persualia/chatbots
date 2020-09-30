@@ -8,8 +8,14 @@ function isMobile() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 }
 
+/* Get Random from Int to Int */
+function randomNumber(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+  
+
 /* Check For Business Hours */
-function isBusinessOpen() {
+function isBusinessOpen(key = null) {
     var nowDateTime = new Date();
     var offset = 0;
     var nowYear = nowDateTime.getFullYear();
@@ -17,7 +23,8 @@ function isBusinessOpen() {
     var nowDate = nowDateTime.getDate();
     var nowDay = nowDateTime.getDay()
     var currentStatus = 'close';
-    var openDay = calendar[nowDay];
+    if (key == null) var openDay = calendar[nowDay];
+    else var openDay = calendar[key][nowDay];
     if (openDay) {
         openDay.forEach(function (item, index) {
             var trackDate = new Date(nowYear, nowMonth, nowDate, item.h, item.m);
@@ -27,10 +34,7 @@ function isBusinessOpen() {
     return (currentStatus == 'open');
 }
 
-/* Check Mobile or Desktop */
-function isMobile() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-}
+
 
 /*send to Datalayer even is in iframe */
 function dataLayerEvent(data) {
