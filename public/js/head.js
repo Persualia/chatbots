@@ -46,14 +46,14 @@ function dataLayerEvent(data) {
 
 }
 /* jump to URL */
-function goToURL(data, keepSession = true) {
+function goToURL(data, keepSession = true, tab = "_self") {
     var url = new URL(data);
     var params = url.searchParams;
     if (typeof ga === 'function' && keepSession) {
         var linkerParam = ga.getAll()[0].get('linkerParam').split("=");
         params.set(linkerParam[0], linkerParam[1]);
     }
-    window.open(url);
+    window.open(url, tab);
     /*if (isIframe()) {
         Landbot.send('sendto', url);
     } else {
