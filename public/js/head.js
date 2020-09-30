@@ -12,7 +12,6 @@ function isMobile() {
 function randomNumber(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-  
 
 /* Check For Business Hours */
 function isBusinessOpen(key = null) {
@@ -33,8 +32,6 @@ function isBusinessOpen(key = null) {
     }
     return (currentStatus == 'open');
 }
-
-
 
 /*send to Datalayer even is in iframe */
 function dataLayerEvent(data) {
@@ -77,7 +74,10 @@ function saveVariables(landbotScope, variables = null) {
     }
     if (isIframe()) {
         landbotScope.core.events.on('widget_open', function() { 
-            console.log("Opened");
+            if (typeof landbotName !== 'undefined') {
+                //dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
+                dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
+            }                
         });
     }    
 }
@@ -108,9 +108,10 @@ if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
 
 if (!isIframe()) {
     console.log("landbotName " + landbotName);
-    if (typeof landbotName !== 'undefined')
-        dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
-    dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot' });
+    if (typeof landbotName !== 'undefined') {
+        //dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
+        dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName  });
+    }
 } 
 
 /* End Google Tag Manager */
