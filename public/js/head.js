@@ -34,17 +34,10 @@ function isBusinessOpen(key = null) {
 }
 
 /*send to Datalayer even is in iframe */
-function dataLayerEvent(data) {
-    /*if (isIframe()) {
-        console.log("YES iFrame");
-        Landbot.send('dataLayerEvent', data);
-    } else {
-        console.log("NO iFrame");
-        dataLayer.push(data);
-    }*/
+function dataLayerEvent(data) {   
     dataLayer.push(data);
-
 }
+
 /* jump to URL */
 function goToURL(data, keepSession = true, tab = "_self") {
     var url = new URL(data);
@@ -53,12 +46,7 @@ function goToURL(data, keepSession = true, tab = "_self") {
         var linkerParam = ga.getAll()[0].get('linkerParam').split("=");
         params.set(linkerParam[0], linkerParam[1]);
     }
-    window.open(url, tab);
-    /*if (isIframe()) {
-        Landbot.send('sendto', url);
-    } else {
-        window.open(url);
-    }*/
+    window.open(url, tab);    
 }
 
 /* save variables */
