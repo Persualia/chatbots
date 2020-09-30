@@ -75,6 +75,11 @@ function saveVariables(landbotScope, variables = null) {
             landbotScope.setCustomData({ [key]: value });
         }
     }
+    if (isIframe()) {
+        landbotScope.core.events.on('widget_open', function() { 
+            console.log("Opened");
+        });
+    }    
 }
 
 function isGTM(id) {
@@ -106,7 +111,7 @@ if (!isIframe()) {
     if (typeof landbotName !== 'undefined')
         dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
     dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot' });
-}
+} 
 
 /* End Google Tag Manager */
 
