@@ -46,7 +46,7 @@ function goToURL(data, keepSession = true, tab = "_self") {
         var linkerParam = ga.getAll()[0].get('linkerParam').split("=");
         params.set(linkerParam[0], linkerParam[1]);
     }
-    window.open(url, tab);    
+    window.open(url, tab);
 }
 
 /* save variables */
