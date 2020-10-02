@@ -34,7 +34,7 @@ function isBusinessOpen(key = null) {
 }
 
 /*send to Datalayer even is in iframe */
-function dataLayerEvent(data) {   
+function dataLayerEvent(data) {
     dataLayer.push(data);
 }
 
@@ -50,7 +50,7 @@ function goToURL(data, keepSession = true, tab = "_self") {
 }
 
 /* save variables */
-function saveVariables(landbotScope, variables = null) {    
+function saveVariables(landbotScope, variables = null) {
     if (typeof (calendar) != "undefined") {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
     }
@@ -61,13 +61,23 @@ function saveVariables(landbotScope, variables = null) {
         }
     }
     if (isIframe()) {
-        landbotScope.core.events.on('widget_open', function() { 
-            if (typeof landbotName !== 'undefined') {
-                //dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
+        landbotScope.core.events.on('widget_open', function () {
+            if (typeof landbotName !== 'undefined') {                
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
-            }                
+            }
         });
-    }    
+        landbotScope.window.addEventListener('click', function (e) {
+            window.dataLayer.push({
+                "event": "gtm.click",
+                'gtm.element': e.target,
+                'gtm.elementClasses': e.target.className || '',
+                'gtm.elementId': e.target.id || '',
+                'gtm.elementTarget': e.target.target || '',
+                'gtm.elementUrl': e.target.href || e.target.action || e.target.src || '',
+                'domEvent': e
+            });
+        });
+    }
 }
 
 function isGTM(id) {
@@ -98,9 +108,9 @@ if (!isIframe()) {
     console.log("landbotName " + landbotName);
     if (typeof landbotName !== 'undefined') {
         //dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
-        dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName  });
+        dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
     }
-} 
+}
 
 /* End Google Tag Manager */
 
