@@ -77,6 +77,8 @@ function saveVariables(landbotScope, variables = null) {
                 'domEvent': e
             });
         });
+
+        
     }
 }
 
@@ -91,7 +93,6 @@ function isGTM(id) {
 }
 
 /* Google Tag Manager */
-console.log("gtmID " + typeof gtmID);
 if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
     console.log("gtmID " + gtmID);
     (function (w, d, s, l, i) {

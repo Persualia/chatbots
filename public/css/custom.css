@@ -1,3 +1,7 @@
+.Proactive__card-content {
+  background-color:white;
+  padding:20px;
+}
 .Branding {display:none}
 .is-unselectable {display:none}
 .message-date {display:none !important}
