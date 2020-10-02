@@ -1,7 +1,14 @@
 .Proactive__card-content {
+  border-style: solid;
   background-color:white;
-  padding:20px;
+  border-radius: 20px;  
+  margin-right: 14px;
+  margin-bottom: 30px;
 }
+.launcher__bubble {
+  background-color:white;
+}
+
 .Branding {display:none}
 .is-unselectable {display:none}
 .message-date {display:none !important}
