@@ -107,8 +107,7 @@ if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
 
 if (!isIframe()) {
     console.log("landbotName " + landbotName);
-    if (typeof landbotName !== 'undefined') {
-        //dataLayerEvent({ 'event': 'Landbot Name', 'landbotName': landbotName });
+    if (typeof landbotName !== 'undefined') {        
         dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
     }
 }
