@@ -5,6 +5,7 @@
   margin-right: 14px;
   margin-bottom: 30px;
 }
+
 .launcher__bubble {
   background-color:white;
 }
@@ -81,3 +82,5 @@ button.input-button.u-white-space-normal.is-flex-direction-column:hover {
 */
 
 
+/* SLACK INTEGRATION */
+.htomessage { display:none; }

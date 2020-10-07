@@ -62,7 +62,7 @@ function saveVariables(landbotScope, variables = null) {
     }
     if (isIframe()) {
         landbotScope.core.events.on('widget_open', function () {
-            if (typeof landbotName !== 'undefined') {                
+            if (typeof landbotName !== 'undefined') {                       
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
             }
         });
