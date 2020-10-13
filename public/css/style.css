@@ -55,6 +55,12 @@
 .is-image-button .image,
 .input-button .icon{ pointer-events:none; }
 
+/* Buttons for Scale Number */
+.InputScale__container {
+  padding-left:0.50em;
+  padding-right:0.50em;
+}
+
 /* Button With Link */
 .chains { display: none }
 
