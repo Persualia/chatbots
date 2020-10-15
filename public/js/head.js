@@ -53,6 +53,13 @@ function goToURL(data, keepSession = true, tab = "_self") {
 function saveVariables(landbotScope, variables = null) {
     if (typeof (calendar) != "undefined") {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
+        for (const key in calendar) {
+            let isnum = /^\d+$/.test(val);
+            if (!isnum) {                
+                landbotScope.setCustomData({ [`${key}_businessisopen`]: isBusinessOpen(key) });
+            }
+            console.log(`${key}: ${user[key]} is number ${isnum}`);
+        }      
     }
     landbotScope.setCustomData({ mobile: isMobile() });
     if (variables) {
