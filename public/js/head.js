@@ -54,7 +54,7 @@ function saveVariables(landbotScope, variables = null) {
     if (typeof (calendar) != "undefined") {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
         for (const key in calendar) {
-            let isnum = /^\d+$/.test(val);
+            let isnum = /^\d+$/.test(key);
             if (!isnum) {                
                 landbotScope.setCustomData({ [`${key}_businessisopen`]: isBusinessOpen(key) });
             }
