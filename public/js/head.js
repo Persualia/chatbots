@@ -58,7 +58,7 @@ function saveVariables(landbotScope, variables = null) {
             if (!isnum) {                
                 landbotScope.setCustomData({ [`${key}_businessisopen`]: isBusinessOpen(key) });
             }
-            console.log(`${key}: ${user[key]} is number ${isnum}`);
+            console.log(`${key}: ${calendar[key]} is number ${isnum}`);
         }      
     }
     landbotScope.setCustomData({ mobile: isMobile() });
