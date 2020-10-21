@@ -7,6 +7,7 @@ async function openSlackChannel(data){
     var raw = JSON.stringify({"slackchannelinfo":data});//JSON.stringify({"account":"persualia","userId":"56063398","botId":"725126","node":"Nkf80ivkn"});
 
     var requestOptions = {
+    mode: 'cors',
     method: 'POST',
     headers: myHeaders,
     body: raw,
