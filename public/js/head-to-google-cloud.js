@@ -4,7 +4,7 @@ async function openSlackChannel(data){
     myHeaders.append("Content-Type", "application/json");    
     console.log(data);
 
-    var raw ={"slackchannelinfo":data};//JSON.stringify({"account":"persualia","userId":"56063398","botId":"725126","node":"Nkf80ivkn"});
+    var raw = JSON.stringify({"slackchannelinfo":data});//JSON.stringify({"account":"persualia","userId":"56063398","botId":"725126","node":"Nkf80ivkn"});
 
     var requestOptions = {
     mode: 'no-cors',
