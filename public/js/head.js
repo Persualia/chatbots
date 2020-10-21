@@ -117,6 +117,4 @@ if (!isIframe()) {
         dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
     }
 }
-
 /* End Google Tag Manager */
-
