@@ -56,7 +56,8 @@ async function sendToGoogleSheet(data) {
             .catch(error => {
                 console.log('error', error);
             });*/
-            return response
+            console.log(JSON.stringify(response));
+            return response;
     } catch (error) {
         console.log('error', error);
     }
