@@ -50,7 +50,7 @@ async function sendToGoogleSheet(data) {
 
         fetch("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions)
             .then(result => {
-                console.log(result);
+                console.log(JSON.stringify(result));
                 return result;
             })
             .catch(error => {
