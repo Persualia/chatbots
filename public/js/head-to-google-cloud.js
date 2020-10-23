@@ -36,7 +36,7 @@ async function sendToGoogleSheet(data) {
         })
       .catch(error => console.log('error', error));    
 }*/
-const sendToGoogleSheet = async (data) => {
+function sendToGoogleSheet(data) {
     try {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -47,17 +47,9 @@ const sendToGoogleSheet = async (data) => {
             headers: myHeaders,
             body: raw
         };
-
         const response = await fetch("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions);
-            /*.then(function (result) {
-                console.log('Request succeeded with JSON response', result);
-                return result;
-            })
-            .catch(error => {
-                console.log('error', error);
-            });*/
-            console.log(JSON.stringify(response));
-            return response;
+        console.log(JSON.stringify(response));
+        return response;
     } catch (error) {
         console.log('error', error);
     }
