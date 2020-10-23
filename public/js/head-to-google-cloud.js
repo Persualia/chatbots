@@ -52,11 +52,11 @@ async function sendToGoogleSheet(data) {
             .then(response => {
                 response.text();
                 console.log(`response ${JSON.stringify(response.text())}`);
-                
+                return response;
             })
             .then(result => {
                 console.log(`result ${JSON.stringify(result)}`);
-                return result;
+                
             })
             .catch(error => {
                 console.log('error', error);
