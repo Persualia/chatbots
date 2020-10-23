@@ -68,7 +68,7 @@ function init(landbotScope, variables = null) {
             });
         });        
     }
-    saveVariables(landbotName, variables);
+    saveVariables(landbotScope, variables);
 }
 /* save variables */
 function saveVariables(landbotScope, variables = null) {
