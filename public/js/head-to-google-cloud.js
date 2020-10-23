@@ -51,6 +51,7 @@ async function sendToGoogleSheet(data) {
         fetch("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions)
             .then(function (response) {
                 console.log('Request succeeded with JSON response', response);
+                return response;
             })
             .catch(error => {
                 console.log('error', error);
