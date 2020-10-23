@@ -17,15 +17,15 @@ async function openSlackChannel(data){
 
 }
 
-async function sendToGoogleSheet(data) {    
+const sendToGoogleSheet = async function sendToGoogleSheet(data) {    
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");    
       var raw = JSON.stringify(data);
       var requestOptions = {
-      mode: 'no-cors',
-      method: 'POST',
-      headers: myHeaders,
-      body: raw      
+        mode: 'no-cors',
+        method: 'POST',
+        headers: myHeaders,
+        body: raw      
       };
   
       fetch("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions)
