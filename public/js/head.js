@@ -49,6 +49,27 @@ function goToURL(data, keepSession = true, tab = "_self") {
     window.open(url, tab);
 }
 
+function init(landbotScope, variables = null) {
+    if (isIframe()) {
+        landbotScope.core.events.on('widget_open', function () {
+            if (typeof landbotName !== 'undefined') {                       
+                dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
+            }
+        });
+        landbotScope.window.addEventListener('click', function (e) {                        
+            window.dataLayer.push({
+                "event": "gtm.click",
+                'gtm.element': e.target,
+                'gtm.elementClasses': e.target.className || '',
+                'gtm.elementId': e.target.id || '',
+                'gtm.elementTarget': e.target.target || '',
+                'gtm.elementUrl': e.target.href || e.target.action || e.target.src || '',
+                'domEvent': e
+            });
+        });        
+    }
+    saveVariables(landbotName, variables);
+}
 /* save variables */
 function saveVariables(landbotScope, variables = null) {
     if (typeof (calendar) != "undefined") {
@@ -66,26 +87,7 @@ function saveVariables(landbotScope, variables = null) {
             landbotScope.setCustomData({ [key]: value });
         }
     }
-    if (isIframe()) {
-        landbotScope.core.events.on('widget_open', function () {
-            if (typeof landbotName !== 'undefined') {                       
-                dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
-            }
-        });
-        landbotScope.window.addEventListener('click', function (e) {
-            window.dataLayer.push({
-                "event": "gtm.click",
-                'gtm.element': e.target,
-                'gtm.elementClasses': e.target.className || '',
-                'gtm.elementId': e.target.id || '',
-                'gtm.elementTarget': e.target.target || '',
-                'gtm.elementUrl': e.target.href || e.target.action || e.target.src || '',
-                'domEvent': e
-            });
-        });
-
-        
-    }
+    
 }
 
 function isGTM(id) {

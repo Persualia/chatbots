@@ -55,7 +55,7 @@
 }
 
 .is-image-button.is-flex-direction-column {
-    height: 130px !important;
+    height: 130px default;
 }
 
 .is-image-button .image .Media, 
