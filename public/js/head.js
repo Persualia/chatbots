@@ -55,9 +55,9 @@ function init(landbotScope, variables = null) {
             if (typeof landbotName !== 'undefined') {                       
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
             }
-        });
-        landbotScope.window.addEventListener('click', function (e) {                        
-            window.dataLayer.push({
+        });        
+        landbotScope.window.addEventListener('click', function (e) {                                  
+            dataLayer.push({
                 "event": "gtm.click",
                 'gtm.element': e.target,
                 'gtm.elementClasses': e.target.className || '',
