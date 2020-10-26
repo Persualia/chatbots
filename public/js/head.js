@@ -57,7 +57,7 @@ function init(landbotScope, variables = null) {
             }
         });        
         landbotScope.window.addEventListener('click', function (e) {                                  
-            dataLayer.push({
+            window.dataLayer.push({
                 "event": "gtm.click",
                 'gtm.element': e.target,
                 'gtm.elementClasses': e.target.className || '',
