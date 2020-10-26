@@ -59,7 +59,7 @@ function init(landbotScope, variables = null) {
         landbotScope.window.addEventListener('click', function (e) {                        
             window.dataLayer.push({
                 "event": "gtm.click",
-                'gtm.element': e.target,
+                //'gtm.element': e.target,
                 'gtm.elementClasses': e.target.className || '',
                 'gtm.elementId': e.target.id || '',
                 'gtm.elementTarget': e.target.target || '',
