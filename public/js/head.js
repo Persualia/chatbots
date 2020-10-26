@@ -112,8 +112,9 @@ if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', gtmID);
 } else {
-    console.log('gtm already installed');
+    console.log(`gtm ${gtmID} already installed`);
 }
+/* End Google Tag Manager */
 
 if (!isIframe()) {
     console.log("landbotName " + landbotName);
@@ -121,4 +122,3 @@ if (!isIframe()) {
         dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
     }
 }
-/* End Google Tag Manager */
