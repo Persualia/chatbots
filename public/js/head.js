@@ -55,17 +55,8 @@ function init(landbotScope, variables = null) {
             if (typeof landbotName !== 'undefined') {                       
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
             }
-        });     
-        console.log(landbotScope.window);
-        landbotScope.window.addEventListener('click', function (e) {     
-            console.log({
-                "event": "gtm.click",
-                'gtm.element': e.target,
-                'gtm.elementClasses': e.target.className || '',
-                'gtm.elementId': e.target.id || '',
-                'gtm.elementTarget': e.target.target || '',
-                'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
-            });                          
+        });        
+        landbotScope.window.addEventListener('click', function (e) {                                  
             dataLayer.push({
                 "event": "gtm.click",
                 'gtm.element': e.target,
