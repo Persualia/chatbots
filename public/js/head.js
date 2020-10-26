@@ -64,7 +64,7 @@ function init(landbotScope, variables = null) {
                 'gtm.elementId': e.target.id || '',
                 'gtm.elementTarget': e.target.target || '',
                 'gtm.elementUrl': e.target.href || e.target.action || e.target.src || '',
-                'domEvent': e
+                //'domEvent': e
             });
         });        
     }
