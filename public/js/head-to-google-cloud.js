@@ -39,8 +39,7 @@ async function sendToGoogleSheet(data) {
 async function sendToGoogleSheet(data) {
     try {
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", "https://chats.landbot.io");
+        myHeaders.append("Content-Type", "application/json");        
         var raw = JSON.stringify(data);
         var requestOptions = {                  
             method: 'POST',
