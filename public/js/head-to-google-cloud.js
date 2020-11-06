@@ -41,7 +41,8 @@ async function sendToGoogleSheet(data) {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");        
         var raw = JSON.stringify(data);
-        var requestOptions = {                                 
+        var requestOptions = {    
+            mode: 'no-cors',              
             method: 'POST',
             headers: myHeaders,
             body: raw
