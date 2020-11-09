@@ -47,7 +47,7 @@ async function sendToGoogleSheet(data) {
             headers: myHeaders,
             body: raw
         };
-        await fetch("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions).then(result => {
+        await fetch("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions).then(response => {
             console.log(JSON.stringify(response));
             return response;
         });        
