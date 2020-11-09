@@ -36,7 +36,7 @@ async function sendToGoogleSheet(data) {
         })
       .catch(error => console.log('error', error));    
 }*/
-async function sendToGoogleSheet(data) {
+function sendToGoogleSheet(data) {
     try {
         var myHeaders = new Headers();
         //myHeaders.append("Content-Type", "application/json");        
