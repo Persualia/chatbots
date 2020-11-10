@@ -49,6 +49,7 @@ async function sendToGoogleSheet(data) {
         await fetch(request)
             .then(response => response.json())
             .then(result => {
+                console.log(result.data);
                 return result.data
             });                               
     } catch (error) {
