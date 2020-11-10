@@ -52,6 +52,10 @@ function sendToGoogleSheet(data) {
             console.log('inside the response');
             console.log(response);
             console.log(JSON.stringify(response));
+            response.json().then(data => {
+                console.log('inside the json data');
+                console.log(data);
+            })
             return response;
         });        
         console.log('step after fetch');
