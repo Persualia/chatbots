@@ -38,28 +38,20 @@ async function sendToGoogleSheet(data) {
 }*/
 function sendToGoogleSheet(data) {
     try {
-        var myHeaders = new Headers();
-        //myHeaders.append("Content-Type", "application/json");        
+        var myHeaders = new Headers();        
         var raw = JSON.stringify(data);
-        var requestOptions = {    
-            //mode: 'no-cors',              
+        var requestOptions = {                          
             method: 'POST',
             headers: myHeaders,
             body: raw
         };
         var request = new Request("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions);
-        fetch(request).then(response => {
-            console.log('inside the response');
-            console.log(response);
-            console.log(JSON.stringify(response));
-            response.json().then(data => {
-                console.log('inside the json data');
+        fetch(request).then(response => {                                   
+            response.json().then(data => {                
                 console.log(data);
                 return data;
-            })
-            
-        });        
-        console.log('step after fetch');
+            })            
+        });                
     } catch (error) {
         console.log('error', error);
     }
