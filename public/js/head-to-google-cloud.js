@@ -48,14 +48,17 @@ function sendToGoogleSheet(data) {
             body: raw
         };
         var request = new Request("https://europe-west1-landbot-persualia.cloudfunctions.net/sendToGoogleSheet", requestOptions);
-        fetch(request)
-            .then(response => {
-                console.log('inside the response');
-                console.log(response);
-                console.log(JSON.stringify(response));
-                response.body.json()            
+        fetch(request).then(response => {
+            console.log('inside the response');
+            console.log(response);
+            console.log(JSON.stringify(response));
+            response.json().then(data => {
+                console.log('inside the json data');
+                console.log(data);
+                return data;
             })
-            .then(json => console.log(json) );        
+            
+        });        
         console.log('step after fetch');
     } catch (error) {
         console.log('error', error);
