@@ -35,6 +35,9 @@ function isBusinessOpen(key = null) {
 
 /*send to Datalayer even is in iframe */
 function dataLayerEvent(data) {
+    if (data.event.match('survey','i')) {
+        data.category = window.landbotName;
+    }
     dataLayer.push(data);
 }
 
