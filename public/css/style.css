@@ -1,6 +1,6 @@
-.PopupContent#Main {
+#Main {
   max-width: 500px;
-  max-height: 800px;
+  margin: auto;
 }
 
 .Proactive__card-content {
