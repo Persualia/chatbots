@@ -36,8 +36,9 @@ function isBusinessOpen(key = null) {
 /*send to Datalayer even is in iframe */
 function dataLayerEvent(data) {
     if (data.event.match('survey','i')) {
+        console.log('survey match');
         data.category = window.landbotName;
-    }
+    } else console.log('no match survey');
     dataLayer.push(data);
 }
 
