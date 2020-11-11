@@ -9,7 +9,7 @@
 }
 
 @media (min-width: 576px) {
-  .PopupContent #Main .is-four-cols { width:none; }
+  .PopupContent #Main .is-four-cols { width:none !important; }
 }
 
 /* LAUNCHER LIVECHAT */
