@@ -8,9 +8,7 @@
   padding-right: 10px;
 }
 
-@media (min-width: 576px) {
-  .PopupContent #Main .is-four-cols { width:none !important; }
-}
+.PopupContent #Main .is-four-cols { width:calc(50% - 0.5rem); }
 
 /* LAUNCHER LIVECHAT */
 
