@@ -1,7 +1,8 @@
-.PopupContent {
+.PopupContent#Main {
   max-width: 500px;
   max-height: 800px;
 }
+
 .Proactive__card-content {
   border-style: solid;
   background-color:white;
