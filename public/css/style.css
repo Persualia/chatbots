@@ -1,6 +1,6 @@
 /* POPUP */
 
-.PopupContent { display: flex; }
+.PopupContent { display: flex !important; }
 .PopupContent #Main {
   max-width: 600px;
   max-height: 700px;
