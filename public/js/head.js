@@ -52,6 +52,12 @@ function goToURL(data, keepSession = true, tab = "_self") {
     window.open(url, tab);
 }
 
+function getUrlParam(name) {
+    var url = new URL(window.location.href);
+    var params = url.searchParams;
+    return (params.get(name));
+}
+
 function init(landbotScope, variables = null) {
     if (isIframe()) {
         landbotScope.core.events.on('widget_open', function () {
