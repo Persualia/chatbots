@@ -78,14 +78,15 @@ function init(landbotScope, variables = null) {
         });        
     }
     saveVariables(landbotScope, variables);
+    setTimeout(function() { 
+    	if (typeof ga === 'function') {
+      	landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
+      	console.log(ga.getAll()[0].get('clientId'));
+      } else { console.log('noga') };
+    }, 3000);
 }
 /* save variables */
-function saveVariables(landbotScope, variables = null) {
-    
-    /*if (typeof ga === 'function') {
-        landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
-        console.log(ga.getAll()[0].get('clientId'));
-    } else { console.log('noid') };*/
+function saveVariables(landbotScope, variables = null) {              
     if (typeof (calendar) != "undefined") {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
         for (const key in calendar) {
@@ -136,3 +137,4 @@ if (!isIframe()) {
         dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
     }
 }
+
