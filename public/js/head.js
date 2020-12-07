@@ -83,7 +83,8 @@ function init(landbotScope, variables = null) {
 function saveVariables(landbotScope, variables = null) {
     
     if (typeof ga === 'function') {
-        landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });
+        landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
+        console.log(ga.getAll()[0].get('clientId'))  ;
     }
     if (typeof (calendar) != "undefined") {
         landbotScope.setCustomData({ businessisopen: isBusinessOpen() });
