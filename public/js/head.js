@@ -83,7 +83,7 @@ function init(landbotScope, variables = null) {
       	landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
       	console.log(ga.getAll()[0].get('clientId'));
       } else { console.log('noga') };
-    }, 3000);
+    }, 8000);
 }
 /* save variables */
 function saveVariables(landbotScope, variables = null) {              
