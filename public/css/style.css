@@ -10,6 +10,8 @@
 }
 
 .PopupContent #Main .is-four-cols { width:calc(50% - 0.5rem); }
+.PopupContent #Main .Messages { margin-right: .5rem; }
+
 
 /* LAUNCHER LIVECHAT */
 
