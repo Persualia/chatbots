@@ -67,6 +67,9 @@ function init(landbotScope, variables = null) {
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
             }
         });
+        if (landbotScope.MODE === "Popup" && typeof landbotName != 'undefined') {
+            dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
+        }
         landbotScope.window.addEventListener('click', function (e) {                                  
             window.dataLayer.push({
                 "event": "gtm.click",
