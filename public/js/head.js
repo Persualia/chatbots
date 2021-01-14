@@ -59,10 +59,8 @@ function getUrlParam(name) {
 }
 
 function init(landbotScope, variables = null) {
-    if (isIframe()) {
-        console.log('isIframe');
-        landbotScope.core.events.on('widget_open', function () {
-            console.log('widget_open');
+    if (isIframe()) {        
+        landbotScope.core.events.on('widget_open', function () {            
             if (typeof landbotName !== 'undefined') {                       
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
             }
