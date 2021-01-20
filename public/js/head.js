@@ -59,6 +59,7 @@ function getUrlParam(name) {
 }
 
 function init(landbotScope, variables = null) {
+    console.log(landbotScope.MODE);
     if (isIframe()) {        
         landbotScope.core.events.on('widget_open', function () {            
             if (typeof landbotName !== 'undefined') {                       
