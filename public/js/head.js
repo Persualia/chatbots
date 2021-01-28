@@ -66,7 +66,7 @@ function init(landbotScope, variables = null) {
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
             }
         });
-        if ((landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage") && typeof landbotName != 'undefined') {
+        if ((landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage" || landbotScope.MODE === "Container") && typeof landbotName != 'undefined') {
             dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
         }
         landbotScope.window.addEventListener('click', function (e) {                                  
