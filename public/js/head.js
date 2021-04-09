@@ -95,8 +95,8 @@ function init(landbotScope, variables = null) {
         })
         console.log(json);
         saveVariables(landbotScope, {
-            "ip":json.ip,
-            "country":json.loc,
+            "user_ip":json.ip,
+            "user_country":json.loc,
             "user_agent":json.uag
         })
 	})
