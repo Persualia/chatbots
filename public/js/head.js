@@ -82,6 +82,26 @@ function init(landbotScope, variables = null) {
         });        
     }
     saveVariables(landbotScope, variables);
+
+    let url = 'https://www.cloudflare.com/cdn-cgi/trace.js';
+	fetch(url)
+	.then(res => res.text())
+	.then((out) => {        
+        var arr = out.match(/(\w+)=\s*([^\n]*)/gm);
+        var json = {};
+        arr.map(function(pair){
+            json[pair.split("=")[0]] = pair.split("=")[1];    
+        return;
+        })
+        console.log(json);
+        saveVariables(landbotScope, {
+            "ip":json.ip,
+            "country":json.loc,
+            "user_agent":json.uag
+        })
+	})
+	.catch(err => { throw err });   
+
     setTimeout(function() { 
     	if (typeof ga === 'function') {
       	    landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
