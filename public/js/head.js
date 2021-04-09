@@ -91,7 +91,7 @@ function init(landbotScope, variables = null) {
         var json = {};
         arr.map(function(pair){
             json[pair.split("=")[0]] = pair.split("=")[1];    
-        return;
+            return;
         })
         console.log(json);
         saveVariables(landbotScope, {
