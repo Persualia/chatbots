@@ -70,7 +70,7 @@ function init(landbotScope, variables = null) {
             dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
         }
         landbotScope.window.addEventListener('click', function (e) {         
-            console.log(e.target.className);
+            console.log(/input-button(?!s)|input-button-label/.test(e.target.className));
                 window.dataLayer.push({
                     "event": "gtm.click",
                     'gtm.element': e.target,
