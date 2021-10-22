@@ -70,7 +70,7 @@ function init(landbotScope, variables = null) {
             dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
         }
         landbotScope.window.addEventListener('click', function (e) {         
-            console.log(/input-button(?!s)|input-button-label/.test(e.target.className));
+            if (/input-button(?!s)|input-button-label/.test(e.target.className)) {
                 window.dataLayer.push({
                     "event": "gtm.click",
                     'gtm.element': e.target,
@@ -80,7 +80,7 @@ function init(landbotScope, variables = null) {
                     'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
                     //'domEvent': e
                 });
-            
+            }
         });        
     }
     saveVariables(landbotScope, variables);
