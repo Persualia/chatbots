@@ -59,7 +59,7 @@ function getUrlParam(name) {
 }
 
 function init(landbotScope, variables = null) {
-    console.log(landbotScope.MODE);
+    //console.log(landbotScope.MODE);
     if (isIframe()) {        
         landbotScope.core.events.on('widget_open', function () {            
             if (typeof landbotName !== 'undefined') {                       
@@ -95,7 +95,7 @@ function init(landbotScope, variables = null) {
             json[pair.split("=")[0]] = pair.split("=")[1];    
             return;
         })
-        console.log(json);
+        //console.log(json);
         saveVariables(landbotScope, {
             "user_ip":json.ip,
             "user_country":json.loc,
@@ -107,9 +107,9 @@ function init(landbotScope, variables = null) {
     setTimeout(function() { 
     	if (typeof ga === 'function') {
       	    landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
-      	    console.log(ga.getAll()[0].get('clientId'));
+      	    //console.log(ga.getAll()[0].get('clientId'));
         } else { 
-            console.log('noga') 
+            //console.log('noga') 
             landbotScope.setCustomData({ clientid: 'noga' });
         };
     }, 8000);
@@ -146,7 +146,7 @@ function isGTM(id) {
 
 /* Google Tag Manager */
 if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
-    console.log("gtmID " + gtmID);
+    //console.log("gtmID " + gtmID);
     (function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
             'gtm.start':
@@ -156,12 +156,12 @@ if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', gtmID);
 } else {
-    console.log(`gtm ${gtmID} already installed`);
+    //console.log(`gtm ${gtmID} already installed`);
 }
 /* End Google Tag Manager */
 
 if (!isIframe()) {
-    console.log("landbotName " + landbotName);
+    //console.log("landbotName " + landbotName);
     if (typeof landbotName !== 'undefined') {        
         dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
     }
