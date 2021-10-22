@@ -69,16 +69,18 @@ function init(landbotScope, variables = null) {
         if ((landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage" || landbotScope.MODE === "Container") && typeof landbotName != 'undefined') {
             dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName });
         }
-        landbotScope.window.addEventListener('click', function (e) {                                  
-            window.dataLayer.push({
-                "event": "gtm.click",
-                'gtm.element': e.target,
-                'gtm.elementClasses': e.target.className || '',
-                'gtm.elementId': e.target.id || '',
-                'gtm.elementTarget': e.target.target || '',
-                'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
-                //'domEvent': e
-            });
+        landbotScope.window.addEventListener('click', function (e) {         
+            if (/^input-button(?!s)|input-button-label/gm.test(e.target.className)) {
+                window.dataLayer.push({
+                    "event": "gtm.click",
+                    'gtm.element': e.target,
+                    'gtm.elementClasses': e.target.className || '',
+                    'gtm.elementId': e.target.id || '',
+                    'gtm.elementTarget': e.target.target || '',
+                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
+                    //'domEvent': e
+                });
+            }
         });        
     }
     saveVariables(landbotScope, variables);
