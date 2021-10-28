@@ -39,6 +39,7 @@ function dataLayerEvent(data) {
         data.category = window.landbotName;
     }
     if (window.client) data.client = window.client;
+    if (window.landbotName) data.landbotName = window.landbotName;
     dataLayer.push(data);
 }
 
