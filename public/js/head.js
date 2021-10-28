@@ -38,6 +38,7 @@ function dataLayerEvent(data) {
     if (data.event.match(/survey/i) && !data.category) {        
         data.category = window.landbotName;
     }
+    if (window.client) data.client = window.client;
     dataLayer.push(data);
 }
 
