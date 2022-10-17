@@ -111,20 +111,17 @@ function init(landbotScope, variables = null) {
 	})
 	.catch(err => { throw err });   
 
-  setTimeout(function() { 
-    if (typeof ga === 'function') {
-          landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
-          //console.log(ga.getAll()[0].get('clientId'));
-      } else { 
-          //console.log('noga') 
-          landbotScope.setCustomData({ clientid: 'noga' });
-      };
-  }, 8000);
+    setTimeout(function() { 
+    	if (typeof ga === 'function') {
+      	    landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
+      	    //console.log(ga.getAll()[0].get('clientId'));
+        } else { 
+            //console.log('noga') 
+            landbotScope.setCustomData({ clientid: 'noga' });
+        };
+    }, 8000);
   
-  let fbp = getCookie('_fbp');
-  if (fbp) {
-    landbotScope.setCustomData({fbp: fbp});
-  }
+  landbotScope.setCustomData({fbp: getUrlParam('_fbp')});
 
 }
 /* save variables */

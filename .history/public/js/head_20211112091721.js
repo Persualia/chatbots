@@ -59,12 +59,6 @@ function getUrlParam(name) {
     return (params.get(name));
 }
 
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
 function init(landbotScope, variables = null) {
     //console.log(landbotScope.MODE);
     if (isIframe()) {        
@@ -111,21 +105,15 @@ function init(landbotScope, variables = null) {
 	})
 	.catch(err => { throw err });   
 
-  setTimeout(function() { 
-    if (typeof ga === 'function') {
-          landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
-          //console.log(ga.getAll()[0].get('clientId'));
-      } else { 
-          //console.log('noga') 
-          landbotScope.setCustomData({ clientid: 'noga' });
-      };
-  }, 8000);
-  
-  let fbp = getCookie('_fbp');
-  if (fbp) {
-    landbotScope.setCustomData({fbp: fbp});
-  }
-
+    setTimeout(function() { 
+    	if (typeof ga === 'function') {
+      	    landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
+      	    //console.log(ga.getAll()[0].get('clientId'));
+        } else { 
+            //console.log('noga') 
+            landbotScope.setCustomData({ clientid: 'noga' });
+        };
+    }, 8000);
 }
 /* save variables */
 function saveVariables(landbotScope, variables = null) {              
