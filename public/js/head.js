@@ -84,7 +84,8 @@ function init(landbotScope, variables = null) {
                     'gtm.elementClasses': e.target.className || '',
                     'gtm.elementId': e.target.id || '',
                     'gtm.elementTarget': e.target.target || '',
-                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
+                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || '',
+                    'question': landbotScope.document.querySelector(".Messages .Message[data-author='bot']:last-child .content").innerText,
                     //'domEvent': e
                 });
             }
