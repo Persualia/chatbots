@@ -84,8 +84,7 @@ function init(landbotScope, variables = null) {
                     'gtm.elementClasses': e.target.className || '',
                     'gtm.elementId': e.target.id || '',
                     'gtm.elementTarget': e.target.target || '',
-                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || '',
-                    'question': document.querySelector(".Messages .Message[data-author='bot']:last-child .content").innerText,
+                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''                    
                     //'domEvent': e
                 });
             }
@@ -144,6 +143,7 @@ function saveVariables(landbotScope, variables = null) {
         }      
     }
     landbotScope.setCustomData({ mobile: isMobile() });
+    if (window.landbotName) landbotScope.setCustomData({ landbot_name: window.landbot_name });
     if (variables) {
         for (const [key, value] of Object.entries(variables)) {
             landbotScope.setCustomData({ [key]: value });

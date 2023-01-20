@@ -143,6 +143,7 @@ function saveVariables(landbotScope, variables = null) {
         }      
     }
     landbotScope.setCustomData({ mobile: isMobile() });
+    if (window.landbotName) landbotScope.setCustomData({ landbot_name: window.landbot_name });
     if (variables) {
         for (const [key, value] of Object.entries(variables)) {
             landbotScope.setCustomData({ [key]: value });
