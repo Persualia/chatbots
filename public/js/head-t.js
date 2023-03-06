@@ -1,6 +1,6 @@
 /* Check if is Iframe */
-function isIframe() {
-    return (window.self !== window.top) || (!window.location.href.includes("landbot.io"));
+function isIframe(landbotScope) {
+    return (landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage" || landbotScope.MODE === "Container")//(window.self !== window.top) || (!window.location.href.includes("landbot.io"));
 }
 
 /* Check Mobile or Desktop */
@@ -67,7 +67,7 @@ function getCookie(name) {
 
 function init(landbotScope, variables = null) {
     //console.log(landbotScope.MODE);
-    if (isIframe()) {        
+    if (isIframe(landbotScope)) {        
         landbotScope.core.events.on('widget_open', function () {            
             if (typeof landbotName !== 'undefined') {                       
                 dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName, 'uag': window.navigator.userAgent });
@@ -92,7 +92,7 @@ function init(landbotScope, variables = null) {
     }
     saveVariables(landbotScope, variables);
 
-    let url = 'https://www.cloudflare.com/cdn-cgi/trace.js';
+    /*let url = 'https://www.cloudflare.com/cdn-cgi/trace.js';
 	fetch(url)
 	.then(res => res.text())
 	.then((out) => {        
@@ -109,29 +109,32 @@ function init(landbotScope, variables = null) {
             "user_agent":json.uag
         })
         
+        //dataLayer.push({'uag':json.uag});
 	})
-	.catch(err => { throw err });   
+	.catch(err => { throw err });   */
 
-  setTimeout(function() { 
+  /*setTimeout(function() { 
     if (typeof ga === 'function') {
           landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });      
+          //console.log(ga.getAll()[0].get('clientId'));
       } else { 
+          //console.log('noga') 
           landbotScope.setCustomData({ clientid: 'noga' });
       };
-  }, 8000);
+  }, 8000);*/
   
   if (window.landbotName) {
     landbotScope.setCustomData({ landbot_name: window.landbotName });
   }
 
-  let fbp = getCookie('_fbp');
+  /*let fbp = getCookie('_fbp');
   if (fbp) {
     landbotScope.setCustomData({fbp: fbp});
   }
   let fbc = getCookie('_fbc');
   if (fbc) {
     landbotScope.setCustomData({fbc: fbc});
-  }
+  }*/
 
 }
 /* save variables */
