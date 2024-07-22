@@ -70,11 +70,11 @@ function init(landbotScope, variables = null) {
     if (isIframe()) {        
         landbotScope.core.events.on('widget_open', function () {            
             if (typeof landbotName !== 'undefined') {                       
-                dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName, 'uag': window.navigator.userAgent });
+                //dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName, 'uag': window.navigator.userAgent });
             }
         });
         if ((landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage" || landbotScope.MODE === "Container") && typeof landbotName != 'undefined') {
-            dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName, "uag": window.navigator.userAgent });
+            //dataLayerEvent({ 'event': 'Ace', 'action': 'LPV Bot', 'landbotName': landbotName, "uag": window.navigator.userAgent });
         }
         landbotScope.window.addEventListener('click', function (e) {         
             if (/input-button(?!s)|input-button-label/.test(e.target.className)) {
