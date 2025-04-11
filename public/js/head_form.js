@@ -16,7 +16,6 @@ function randomNumber(min, max) {
 /* Check For Business Hours */
 function isBusinessOpen(key = null) {
     var nowDateTime = new Date();
-    var offset = 0;
     var nowYear = nowDateTime.getFullYear();
     var nowMonth = nowDateTime.getMonth();
     var nowDate = nowDateTime.getDate();
@@ -29,13 +28,13 @@ function isBusinessOpen(key = null) {
             if (nowDateTime > trackDate) currentStatus = item.status;
         });
     }
-    return (currentStatus == 'open');
+    return currentStatus === 'open';
 }
 
 /* Enviar al DataLayer (evitando 'LPV Bot') */
 function dataLayerEvent(data) {
     if (data.event === 'Ace' && data.action === 'LPV Bot') {
-        return; // No enviar este evento desde Landbot
+        return; // Bloqueamos este evento si viene de Landbot
     }
     if (data.event.match(/survey/i) && !data.category) {
         data.category = window.landbotName;
@@ -46,7 +45,7 @@ function dataLayerEvent(data) {
     dataLayer.push(data);
 }
 
-/* Jump to URL */
+/* Ir a URL */
 function goToURL(data, keepSession = true, tab = "_self") {
     var url = new URL(data);
     var params = url.searchParams;
@@ -57,87 +56,17 @@ function goToURL(data, keepSession = true, tab = "_self") {
     window.open(url, tab);
 }
 
+/* Obtener parámetros de URL */
 function getUrlParam(name) {
     var url = new URL(window.location.href);
-    var params = url.searchParams;
-    return (params.get(name));
+    return url.searchParams.get(name);
 }
 
+/* Obtener cookies */
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-/* Inicialización principal */
-function init(landbotScope, variables = null) {
-    if (isIframe()) {
-        landbotScope.core.events.on('widget_open', function () {
-            if (typeof landbotName !== 'undefined') {
-                dataLayerEvent({ event: 'Ace', action: 'LPV Bot', landbotName: landbotName, uag: window.navigator.userAgent });
-            }
-        });
-
-        if ((landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage" || landbotScope.MODE === "Container") && typeof landbotName !== 'undefined') {
-            dataLayerEvent({ event: 'Ace', action: 'LPV Bot', landbotName: landbotName, uag: window.navigator.userAgent });
-        }
-
-        landbotScope.window.addEventListener('click', function (e) {
-            if (/input-button(?!s)|input-button-label/.test(e.target.className)) {
-                dataLayer.push({
-                    event: "gtm.click",
-                    'gtm.element': e.target,
-                    'gtm.elementClasses': e.target.className || '',
-                    'gtm.elementId': e.target.id || '',
-                    'gtm.elementTarget': e.target.target || '',
-                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
-                });
-            }
-        });
-    }
-
-    saveVariables(landbotScope, variables);
-
-    // Obtener IP y geolocalización
-    fetch('https://www.cloudflare.com/cdn-cgi/trace.js')
-        .then(res => res.text())
-        .then(out => {
-            var arr = out.match(/(\w+)=\s*([^\n]*)/gm);
-            var json = {};
-            arr.map(function (pair) {
-                json[pair.split("=")[0]] = pair.split("=")[1];
-            });
-            saveVariables(landbotScope, {
-                user_ip: json.ip,
-                user_country: json.loc,
-                user_agent: json.uag
-            });
-        })
-        .catch(err => { throw err });
-
-    // Enviar clientID de GA
-    setTimeout(function () {
-        if (typeof ga === 'function') {
-            landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });
-        } else {
-            landbotScope.setCustomData({ clientid: 'noga' });
-        }
-    }, 8000);
-
-    // landbotName
-    if (window.landbotName) {
-        landbotScope.setCustomData({ landbot_name: window.landbotName });
-    }
-
-    // FBP/FBC de Facebook
-    let fbp = getCookie('_fbp');
-    if (fbp) {
-        landbotScope.setCustomData({ fbp: fbp });
-    }
-    let fbc = getCookie('_fbc');
-    if (fbc) {
-        landbotScope.setCustomData({ fbc: fbc });
-    }
 }
 
 /* Guardar variables personalizadas */
@@ -171,21 +100,86 @@ function isGTM(id) {
     return false;
 }
 
-/* Insertar GTM si no está */
+/* Inicialización principal */
+function init(landbotScope, variables = null) {
+    // Inyectar landbotName como variable persistente en el dataLayer
+    if (window.landbotName) {
+        dataLayer.push({ landbotName: window.landbotName });
+        landbotScope.setCustomData({ landbot_name: window.landbotName });
+    }
+
+    if (isIframe()) {
+        landbotScope.core.events.on('widget_open', function () {
+            if (typeof landbotName !== 'undefined') {
+                dataLayerEvent({ event: 'Ace', action: 'LPV Bot', landbotName: landbotName, uag: window.navigator.userAgent });
+            }
+        });
+
+        if ((landbotScope.MODE === "Popup" || landbotScope.MODE === "Fullpage" || landbotScope.MODE === "Container") && typeof landbotName !== 'undefined') {
+            dataLayerEvent({ event: 'Ace', action: 'LPV Bot', landbotName: landbotName, uag: window.navigator.userAgent });
+        }
+
+        landbotScope.window.addEventListener('click', function (e) {
+            if (/input-button(?!s)|input-button-label/.test(e.target.className)) {
+                dataLayer.push({
+                    event: "gtm.click",
+                    'gtm.element': e.target,
+                    'gtm.elementClasses': e.target.className || '',
+                    'gtm.elementId': e.target.id || '',
+                    'gtm.elementTarget': e.target.target || '',
+                    'gtm.elementUrl': e.target.href || e.target.action || e.target.src || ''
+                });
+            }
+        });
+    }
+
+    saveVariables(landbotScope, variables);
+
+    fetch('https://www.cloudflare.com/cdn-cgi/trace.js')
+        .then(res => res.text())
+        .then((out) => {
+            var arr = out.match(/(\w+)=\s*([^\n]*)/gm);
+            var json = {};
+            arr.map(function (pair) {
+                json[pair.split("=")[0]] = pair.split("=")[1];
+            });
+            saveVariables(landbotScope, {
+                user_ip: json.ip,
+                user_country: json.loc,
+                user_agent: json.uag
+            });
+        })
+        .catch(err => { throw err });
+
+    setTimeout(function () {
+        if (typeof ga === 'function') {
+            landbotScope.setCustomData({ clientid: ga.getAll()[0].get('clientId') });
+        } else {
+            landbotScope.setCustomData({ clientid: 'noga' });
+        }
+    }, 8000);
+
+    let fbp = getCookie('_fbp');
+    if (fbp) landbotScope.setCustomData({ fbp: fbp });
+
+    let fbc = getCookie('_fbc');
+    if (fbc) landbotScope.setCustomData({ fbc: fbc });
+}
+
+/* Cargar GTM si no existe */
 if (typeof gtmID !== 'undefined' && !isGTM(gtmID)) {
     (function (w, d, s, l, i) {
-        w[l] = w[l] || []; w[l].push({
-            'gtm.start': new Date().getTime(), event: 'gtm.js'
-        });
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
         var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', gtmID);
 }
 
-/* Enviar evento LPV Bot solo si NO estamos en iframe (Convertri lo manda) */
+/* Solo Landbot (no iframe): enviar LPV Bot (será bloqueado por dataLayerEvent) */
 if (!isIframe()) {
     if (typeof landbotName !== 'undefined') {
         dataLayerEvent({ event: 'Ace', action: 'LPV Bot', landbotName: landbotName });
